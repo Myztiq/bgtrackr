@@ -15,7 +15,9 @@
     "browserify-middleware": "~1.19.0",
     "coffeeify": "~0.5.2",
     "express-ember-handlebars": "~0.1.0",
-    "bower": "~1.2.7"
+    "bower": "~1.2.7",
+    "request": "~2.27.0",
+    "xml2js": "~0.2.8"
   },
   "engines": {
     "node": "0.8.x",

@@ -7,4 +7,5 @@ BGTrackr.Router.map ->
 
 BGTrackr.GamesRoute = Ember.Route.extend
   model: ()->
-    @store.find('game')
+    EmberFire.Array.create
+      ref: new Firebase("https://bgtrackr.firebaseio.com/games")

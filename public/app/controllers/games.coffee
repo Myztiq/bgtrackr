@@ -5,9 +5,7 @@ BGTrackr.GamesController = Ember.ArrayController.extend
       title = @get('newTitle');
       if !title.trim() then return
 
-      # Create the new Todo model
-      game = @store.createRecord 'game',
+      @pushObject
         title: title
 
       @set('newTitle', '')
-      game.save();
