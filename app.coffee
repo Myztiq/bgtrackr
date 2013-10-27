@@ -1,8 +1,7 @@
 express = require 'express'
 http = require 'http'
 path = require 'path'
-less = require 'less-middleware'
-expressCoffee = require 'express-coffee'
+coffeescript = require('connect-coffee-script')
 
 app = express()
 
@@ -14,23 +13,22 @@ if process.env.serverURL?
 app.configure ->
   app.use express.errorHandler()
 
-  app.use expressCoffee
-    path: __dirname + '/public'
-    live: !process.env.PRODUCTION
-    uglify: process.env.PRODUCTION
+  app.use coffeescript(src: path.join __dirname, 'public')
 
-  app.use less
-    src: path.join __dirname, 'public'
-    once: false
+  app.use(require('less-middleware')({ src: path.join __dirname, 'public' }));
 
   app.use express.favicon __dirname + '/public/images/favicon.ico'
+
+  app.use('/components', express.static(__dirname + '/bower_components'))
+
   app.use express.static __dirname + '/public'
+
+  app.use require('connect-assets')
+      src: path.join __dirname, 'public'
 
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
-
-
 
 app.use (req, res)->
   res.status 404

@@ -14,3 +14,7 @@ results
 npm-debug.log
 node_modules
 .idea
+public/styles/*.css
+public/app/*.js
+public/application.js
+bower_components

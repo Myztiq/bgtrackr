@@ -1,0 +1,23 @@
+{
+  "name": "bgtrackr",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Myztiq/bgtrackr",
+  "authors": [
+    "Ryan Kahn <ryan@ryan-kahn.com>"
+  ],
+  "description": "Board game tracker",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.0",
+    "ember": "~1.1.2",
+    "moment": "~2.3.1"
+  }
+}
