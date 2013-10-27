@@ -1,11 +1,28 @@
 <header>
-  <h1>Yay!</h1>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Board Game Tracker</a>
+      </div>
+      <div class="nav navbar-nav">
+        <li>
+          <a href="/games">My Games</a>
+        </li>
+        <li>
+          <a href="/games/search">Search</a>
+        </li>
+      </div>
+      <div class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
+      </div>
+    </div>
+  </nav>
 </header>
-
-<div>
-  {{outlet}}
+<div class="container">
+  <div>
+    {{App.stateManager.currentState.name}}
+    {{outlet}}
+  </div>
 </div>
-
-<footer>
-  Footer
-</footer>

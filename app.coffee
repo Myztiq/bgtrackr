@@ -24,8 +24,7 @@ app.configure ->
 
   app.use('/components', express.static(__dirname + '/bower_components'))
 
-  app.get '/app/app.js', browserify(__dirname + '/public/app/app.coffee')
-
+  app.use '/app/app.js', browserify(__dirname + '/public/app/app.coffee')
 
   app.use "/templates.js", ember_handlebars __dirname + "/public/app/templates",
     exts: ['hbs','handlebars']
@@ -43,12 +42,8 @@ app.options '/api/bgg/*', (req, res, next)->
 app.get '/api/bgg/*', (req, res, next)->
   request.get('http://www.boardgamegeek.com/xmlapi/'+req.params[0]).pipe(res)
 
-app.get '*.html', (req, res)->
+app.get '*', (req, res)->
   res.sendfile(__dirname + '/public/index.html')
-
-app.use (req, res)->
-  res.status 404
-  res.send '404 - Could not find resource'
 
 http.createServer(app).listen process.env.PORT or 3000
 

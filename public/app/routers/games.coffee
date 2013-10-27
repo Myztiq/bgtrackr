@@ -1,11 +1,11 @@
 require './../models/game.coffee'
 require './../controllers/games.coffee'
 
-BGTrackr.Router.map ->
-  @resource 'games',
-    path: '/'
+App.GamesRoute = Ember.Route.extend
+  beforeModel: ->
+    if !window.user?
+      @transitionTo('login')
 
-BGTrackr.GamesRoute = Ember.Route.extend
   model: ()->
     EmberFire.Array.create
       ref: new Firebase("https://bgtrackr.firebaseio.com/games")

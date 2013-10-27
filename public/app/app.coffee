@@ -1,12 +1,26 @@
-window.BGTrackr = Ember.Application.create()
+window.AppRef = new Firebase('https://bgtrackr.firebaseIO.com')
 
-bgTrackrRef = new Firebase('https://bgtrackr.firebaseIO.com')
-auth = new FirebaseSimpleLogin bgTrackrRef, (err, user)->
-  if user
-    console.log user
-  else
-    console.log 'Not logged in'
+initd = false
+init = ()->
+  if initd then return
+  initd = true
 
-#auth.login('facebook')
+  window.App = Ember.Application.create()
+  App.Router.reopen
+    location: 'history'
 
-require './routers/games.coffee'
+  App.Router.map ->
+    @resource 'games', ->
+      @route 'search'
+    @resource 'login'
+    @resource 'logout'
+
+  require './routers/games.coffee'
+  require './routers/login.coffee'
+  require './routers/logout.coffee'
+
+
+window.firebaseAuth = new FirebaseSimpleLogin AppRef, (err, user)->
+  console.log user
+  window.user = user
+  init()

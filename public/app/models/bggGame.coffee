@@ -10,5 +10,5 @@ getBGGGame = (id)->
     error: ()->
       console.log 'Could not load BGG Game with id '+id
 
-window.BGTrackr.BggGame = DS.Model.extend
+window.App.BggGame = DS.Model.extend
   name: ''

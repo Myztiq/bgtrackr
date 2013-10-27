@@ -1,4 +1,4 @@
-BGTrackr.GamesController = Ember.ArrayController.extend
+App.GamesController = Ember.ArrayController.extend
   actions:
     createGame: ->
       # Get the game title set by the "New Title" text field
