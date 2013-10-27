@@ -1,6 +1,7 @@
-require './models/game.coffee'
+require './../models/game.coffee'
+require './../controllers/games.coffee'
 
-window.BGTrackr.Router.map ->
+BGTrackr.Router.map ->
   @resource 'games',
     path: '/'
 

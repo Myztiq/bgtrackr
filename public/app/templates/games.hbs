@@ -1,4 +1,9 @@
-{{#each}}
-  {{title}}
-  <br/>
-{{/each}}
+<h1>Games</h1>
+<ul>
+  {{#each}}
+    <li>{{title}}</li>
+  {{/each}}
+</ul>
+
+{{input type="text" id="new-game" placeholder="What's the name of your game?"
+              value=newTitle action="createGame"}}
