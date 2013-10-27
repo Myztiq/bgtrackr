@@ -1,4 +1,5 @@
-App.LoginController = Ember.ArrayController.extend
+App.LoginController = Ember.Controller.extend
+  needs: 'auth'
   actions:
     login: ->
-      window.firebaseAuth.login('facebook')
+      @get('controllers.auth').login()

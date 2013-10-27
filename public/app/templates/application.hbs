@@ -14,7 +14,11 @@
       </div>
       <div class="nav navbar-nav navbar-right">
         <li>
-          <a href="/logout">Logout</a>
+          {{#if controllers.auth.authed}}
+            <a href="/logout">Logout</a>
+          {{else}}
+            <a href="/login">Login</a>
+          {{/if}}
         </li>
       </div>
     </div>

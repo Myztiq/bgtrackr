@@ -1,26 +1,26 @@
 window.AppRef = new Firebase('https://bgtrackr.firebaseIO.com')
 
-initd = false
-init = ()->
-  if initd then return
-  initd = true
+window.App = Ember.Application.create()
 
-  window.App = Ember.Application.create()
-  App.Router.reopen
-    location: 'history'
+require './controllers/auth.coffee'
+require './routers/games.coffee'
+require './routers/login.coffee'
+require './routers/logout.coffee'
 
-  App.Router.map ->
-    @resource 'games', ->
-      @route 'search'
-    @resource 'login'
-    @resource 'logout'
+App.Router.reopen
+  location: 'history'
 
-  require './routers/games.coffee'
-  require './routers/login.coffee'
-  require './routers/logout.coffee'
+App.Router.map ->
+  @resource 'games', ->
+    @route 'search'
+  @resource 'login'
+  @resource 'logout'
 
+App.ApplicationController = Ember.Controller.extend
+  needs: 'auth'
 
-window.firebaseAuth = new FirebaseSimpleLogin AppRef, (err, user)->
-  console.log user
-  window.user = user
-  init()
+App.ApplicationRoute = Ember.Route.extend
+  beforeModel: (transition)->
+    if transition.targetName != 'login'
+      @controllerFor('auth').redirectAuth()
+
