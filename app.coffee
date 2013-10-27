@@ -3,7 +3,7 @@ http = require 'http'
 path = require 'path'
 browserify = require('browserify-middleware')
 coffeeify = require('coffeeify')
-connect_handlebars = require('connect-handlebars')
+ember_handlebars = require('express-ember-handlebars')
 
 browserify.settings('transform', [coffeeify])
 
@@ -25,16 +25,13 @@ app.configure ->
   app.get '/app/app.js', browserify(__dirname + '/public/app/app.coffee')
 
 
-  app.use "/templates.js", connect_handlebars __dirname + "/public/app/templates",
+  app.use "/templates.js", ember_handlebars __dirname + "/public/app/templates",
     exts: ['hbs','handlebars']
 
   app.use express.static __dirname + '/public'
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
-
-
-
 
 
 app.get '*.html', (req, res)->

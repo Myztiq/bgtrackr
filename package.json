@@ -13,7 +13,7 @@
     "less": "~1.5.0",
     "browserify-middleware": "~1.19.0",
     "coffeeify": "~0.5.2",
-    "connect-handlebars": "0.0.5"
+    "express-ember-handlebars": "~0.1.0"
   },
   "engines": {
     "node": "0.8.x",

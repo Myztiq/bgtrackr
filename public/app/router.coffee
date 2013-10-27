@@ -1,3 +1,3 @@
 window.BGTrackr.Router.map ->
-  @resource 'todos',
+  @resource 'games',
     path: '/'
