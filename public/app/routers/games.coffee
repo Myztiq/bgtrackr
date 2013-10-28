@@ -1,7 +1,7 @@
 require './../models/game.coffee'
-require './../controllers/games.coffee'
+require './../controllers/games/index.coffee'
 
-App.GamesRoute = Ember.Route.extend
+App.GamesIndexRoute = Ember.Route.extend
   model: ()->
     EmberFire.Array.create
       ref: new Firebase("https://bgtrackr.firebaseio.com/users/"+App.get('user').id+'/games')
